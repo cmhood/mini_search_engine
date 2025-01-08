@@ -35,6 +35,10 @@ important to auto-update the index, but since I am already manually choosing
 which specific domains to crawl, and which pages on each of those domains,
 I do not consider it as important to be able to update the index automatically.
 
+Scrapy supports HTTP proxies through `HttpProxyMiddleware` which can be used
+to alternate IP addresses while scraping. This would allow the script to
+avoid throttling on certain websites.
+
 ## Indexing
 
 Between Tantivy and Vespa, I chose the former. Before working on this project,
