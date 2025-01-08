@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>{{query}} - Mini search engine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/style.css?v=20250106" />
+</head>
+<body>
+
+<form class="search" action="/search">
+<h1><a href="/">Mini search engine</a></h1>
+<input name="q" value="{{query}}" />
+<button>Search</button>
+</form>
+
+<h2>
+{% match results %}
+{% when search::SearchResults::Error with (message) %}
+{{message}}
+{% when search::SearchResults::Entries with (entries) %}
+Found {{entries.len()}} result{% if entries.len() > 1 %}s{% endif %}
+for <span class="query">{{query}}</span>
+{% endmatch %}
+</h2>
+
+<p>Retrieved in <strong>{{latency}}</strong></p>
+
+{% match results %}
+{% when search::SearchResults::Entries with (entries) %}
+{% for ent in entries %}
+<div class="result">
+<a href="{{ent.url}}">{{ent.title}}</a><br />
+<span class="url">{{ent.url}}</span>
+<div>...{{ent.excerpt|safe}}...</div>
+</div>
+{% endfor %}
+{% else %}
+{% endmatch %}
+
+<footer>
+<a href="/stats">Search engine statistics</a><br />
+<a href="https://github.com/cmhood/mini_search_engine">Source code on GitHub</a>
+</footer>
+
+</body>
+</html>

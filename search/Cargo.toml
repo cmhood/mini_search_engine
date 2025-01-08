@@ -1,0 +1,17 @@
+[package]
+name = "mini_search_engine"
+version = "0.1.0"
+edition = "2021"
+default-run = "server"
+
+[dependencies]
+actix-files = "0.6.6"
+actix-web = "4"
+askama = "0.12.1"
+askama_actix = "0.14.0"
+chrono = "0.4.39"
+regex = "1.11.1"
+serde = "1.0.216"
+serde_derive = "1.0.216"
+serde_json = "1.0.133"
+tantivy = "0.22.0"

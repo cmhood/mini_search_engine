@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Mini search engine statistics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/style.css?v=20250106" />
+</head>
+<body>
+
+<h1>Mini search engine statistics</h1>
+
+<div><strong>Index size:</strong> {{index_size}}, {{index_page_count}} pages</div>
+<div><strong>Last updated:</strong> {{creation_time}}</div>
+
+<h2>Indexed domains</h2>
+
+<dl>
+{% for (domain, count) in domain_page_counts %}
+<dt>{{domain}}:</dt><dd>{{count}} pages</dd>
+{% endfor %}
+</dl>
+
+<footer>
+<p><a href="/">Return to homepage</a></p>
+</footer>
+
+</body>
+</html>

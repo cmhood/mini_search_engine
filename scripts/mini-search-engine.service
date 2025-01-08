@@ -1,0 +1,12 @@
+[Unit]
+Description=Mini search engine
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/mini-search-engine-server /var/lib/mini_search_engine/index 127.0.0.1:3000
+Restart=always
+User=mini-search-engine
+Group=mini-search-engine
+
+[Install]
+WantedBy=multi-user.target
